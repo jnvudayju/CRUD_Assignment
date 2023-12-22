@@ -1,0 +1,61 @@
+.add-employee-btn {
+    margin-top:40px;
+}
+.form-con {
+    border:1px solid black;
+    border-radius: 12px;
+    width:fit-content;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    margin-top:60px;
+}
+
+.employee-form {
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    align-items: flex-start;
+    gap:20px;
+    .input-con {
+        display:flex;
+        gap:20px;
+        justify-content: space-between;
+        width:100%;
+    }
+}
+
+.employee-data-con {
+    border:1px solid black;
+    width:350px;
+    margin:auto;
+    .employee-details-con {
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 1px solid black;
+    }
+
+}
+
+.admin-login-con {
+    border:1px solid black;
+    width:fit-content;
+    margin:auto;
+    border-radius: 12px;
+    margin-top:60px;
+    padding:20px;
+    .login-form {
+        display:flex;
+        flex-direction: column;
+        gap:20px;
+        margin-top:20px;
+        .email-con, .password-con{
+            display:flex;
+            justify-content: space-between;
+            gap:20px;
+        }
+        
+    }
+}
