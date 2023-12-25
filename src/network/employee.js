@@ -2,8 +2,10 @@ import axios from "axios";
 import { SERVER_BASE_URL } from "../config/config";
 
 export const _createEmployee = async (payload) => {
+  const token = localStorage.getItem("token");
   const headers = {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
   };
 
   try {
@@ -20,8 +22,10 @@ export const _createEmployee = async (payload) => {
 };
 
 export const _getAllEmployees = async () => {
+  const token = localStorage.getItem("token");
   const headers = {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
   };
 
   try {
@@ -37,8 +41,10 @@ export const _getAllEmployees = async () => {
 };
 
 export const _getEmployee = async (id) => {
+  const token = localStorage.getItem("token");
   const headers = {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
   };
 
   try {
@@ -54,14 +60,16 @@ export const _getEmployee = async (id) => {
 };
 
 export const _updateEmployee = async (id, payload) => {
+  const token = localStorage.getItem("token");
   const headers = {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
   };
 
   console.log({ payload });
   try {
     const response = await axios({
-      method: "put",
+      method: "patch",
       url: `${SERVER_BASE_URL}/employee/${id}`,
       headers,
       data: payload,
@@ -73,8 +81,10 @@ export const _updateEmployee = async (id, payload) => {
 };
 
 export const _deleteEmployee = async (id) => {
+  const token = localStorage.getItem("token");
   const headers = {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
   };
 
   try {

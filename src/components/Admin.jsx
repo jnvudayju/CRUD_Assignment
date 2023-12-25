@@ -4,6 +4,8 @@ import _userlogin from "../network/userlogin";
 import { useNavigate } from "react-router-dom";
 const Admin = () => {
   const [user, setUser] = useState([]);
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
     setUser((prevState) => {
       return {
@@ -18,12 +20,14 @@ const Admin = () => {
     const credentials = { email: user.email, password: user.password };
     _userlogin(credentials)
       .then((res) => {
-          const token = res.data.token;
-          console.log(token);
-          navigate("/home");
-
+        const token = res.data.token;
+        localStorage.setItem("token", token);
+        navigate("/home");
       })
       .catch((err) => {
+        if (err.name === "AUTHORIZATION_ERROR") {
+          setError("Invalid email or password");
+        }
         console.error(err);
       });
   };
@@ -41,6 +45,7 @@ const Admin = () => {
               placeholder="Enter Email here"
               name="email"
               onChange={handleChange}
+              onFocus={() => setError(null)}
             />
           </div>
           <div className="password-con">
@@ -50,8 +55,14 @@ const Admin = () => {
               placeholder="Password"
               name="password"
               onChange={handleChange}
+              onFocus={() => setError(null)}
             />
           </div>
+          {error && (
+            <div>
+              <p>{error}</p>
+            </div>
+          )}
           <button onClick={handleLogin}>Login</button>
         </div>
       </div>

@@ -55,15 +55,11 @@ const Home = () => {
       <hr></hr>
       <div className="employee-data-con">
         {allEmployee.map((employee) => (
-          <>
-            <div className="employee-details-con">
-              <h2>{employee?.name}</h2>
-              <button onClick={() => editEmployee(employee._id)}>Edit</button>
-              <button onClick={() => deleteEmployee(employee._id)}>
-                Delete
-              </button>
-            </div>
-          </>
+          <div key={employee.id} className="employee-details-con">
+            <h2>{employee?.name}</h2>
+            <button onClick={() => editEmployee(employee.id)}>Edit</button>
+            <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
+          </div>
         ))}
       </div>
     </>
